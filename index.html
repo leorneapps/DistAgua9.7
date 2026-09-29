@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="apple-mobile-web-app-title" content="DistAgua Geo"/>
+  <title>DistAgua Geo — Sistema de Vendas V9.6</title>
+  <link rel="manifest" href="manifest.json">
+  <!-- === v5.3 CORREÇÃO === Favicon apontando para logo-topo.png para eliminar erro 404 -->
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <!-- === v5.5 ALTERACAO === Leaflet CSS para mapa (carregamento lazy) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" media="print" onload="this.media='all'">
+</head>
+<body>
+  <!-- === v5.0 ALTERAÇÃO === Header com logo oficial Água Lírios -->
+  <header class="app-header">
+    <img src="logo-topo.png" alt="Água Lírios" class="logo-topo"/>
+  </header>
+
+  <main class="app-main">
+    <section id="home" class="home-wrap" aria-label="Menu principal">
+      <div class="grid-2">
+        <!-- 1ª linha: Registrar Venda -->
+        <button class="tile" id="btn-venda" style="grid-column: span 2;">
+          <div class="tile-icon">🛒</div>
+          <div class="tile-title">Registrar Venda</div>
+          <div class="tile-sub">Venda rápida com baixa automática</div>
+        </button>
+        <!-- 2ª linha: Clientes + Mapa / Prospecção -->
+        <button class="tile" id="btn-clientes">
+          <div class="tile-icon">👤</div>
+          <div class="tile-title">Clientes</div>
+          <div class="tile-sub">Cadastro e recebimento de vale</div>
+        </button>
+        <button class="tile" id="btn-mapa">
+          <div class="tile-icon">🗺️</div>
+          <div class="tile-title">Mapa / Prospecção</div>
+          <div class="tile-sub">Visualizar rota e pontos</div>
+        </button>
+        <!-- 3ª linha: Custos + Estoque -->
+        <button class="tile" id="btn-custos">
+          <div class="tile-icon">💸</div>
+          <div class="tile-title">Custos</div>
+          <div class="tile-sub">Despesas do dia</div>
+        </button>
+        <button class="tile" id="btn-estoque">
+          <div class="tile-icon">📦</div>
+          <div class="tile-title">Estoque</div>
+          <div class="tile-sub">Entrada, saída e inventário atual</div>
+        </button>
+        <!-- 4ª linha: Relatórios + Configurações -->
+        <button class="tile" id="btn-rel">
+          <div class="tile-icon">📊</div>
+          <div class="tile-title">Relatórios</div>
+          <div class="tile-sub">Diário, mensal e conferência</div>
+        </button>
+        <button class="tile" id="btn-config">
+          <div class="tile-icon">⚙️</div>
+          <div class="tile-title">Configurações</div>
+          <div class="tile-sub">Telegram, backup e restauração</div>
+        </button>
+      </div>
+    </section>
+
+    <section id="conteudo" class="content hidden" aria-live="polite"></section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modal-title"></h3>
+      <div id="modal-body"></div>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn-secondary">Cancelar</button>
+        <button id="modal-confirm" class="btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- === v5.0 ALTERAÇÃO === Footer com novo nome Dist Lírios -->
+  <footer class="app-footer">DistAgua Geo V9.6</footer>
+
+  <!-- === v4.7 ALTERAÇÃO === backup.js carregado ANTES do app.js -->
+  <script src="backup.js" defer></script>
+  <!-- === v5.5 ALTERACAO === Leaflet JS para mapa (carregamento lazy) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+  <script src="app.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+  </script>
+</body>
+</html>
